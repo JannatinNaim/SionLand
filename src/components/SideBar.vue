@@ -103,19 +103,20 @@ aside {
   }
 
   .logo-expanded {
-    padding: 1.5rem;
+    //padding: 1.5rem;
+    padding-bottom: 1.5rem;
 
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.4rem;
 
     .logo-icon {
-      flex: 1;
+      flex: 2;
     }
 
     .logo-text {
-      flex: 3;
-      font-size: 1.4rem;
+      flex: 1;
+      font-size: 2.2rem;
       font-family: "Ailenrons";
     }
 
@@ -126,10 +127,6 @@ aside {
 
   &.is-expanded {
     width: 17rem;
-
-    .menu {
-      padding-left: 1.5rem;
-    }
   }
 
   .divider {

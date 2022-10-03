@@ -36,7 +36,7 @@ watch(isExpanded, () => {
 
 <template>
   <div class="menu-section" @click="toggleClick">
-    <div class="menu-section-icon">
+    <div :class="`menu-section-icon ${isExpanded && 'is-expanded'}`">
       <img :src="getIcon(icon)" :alt="iconAlt" />
     </div>
 
@@ -84,6 +84,10 @@ watch(isExpanded, () => {
     img {
       height: 1.4rem;
     }
+  }
+
+  .is-expanded {
+    width: 2.6rem;
   }
 
   &-list {

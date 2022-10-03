@@ -1,12 +1,35 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
 import TextButton from "../components/buttons/TextButton.vue";
+import LiveMenu from "../components/live/LiveMenu.vue";
+
+const showLiveMenu = ref(false);
+const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
 </script>
 
 <template>
   <main>
     <section class="hero">
+      <video autoplay muted loop id="heroVideoBackground">
+        <source
+          src="@/assets/videos/backgrounds/home-hero-background.mp4"
+          type="video/mp4"
+        />
+      </video>
+
       <div class="live-button">
-        <TextButton text="Private Presale is live" />
+        <TextButton
+          :handleClick="handleLiveButtonClick"
+          text="Private Presale is live"
+        />
+
+        <div
+          v-if="showLiveMenu"
+          @click="handleLiveButtonClick"
+          class="background-blur"
+        ></div>
+        <LiveMenu v-if="showLiveMenu" />
       </div>
 
       <div class="branding-logo py-8">
@@ -28,19 +51,23 @@ import TextButton from "../components/buttons/TextButton.vue";
         >
       </h1>
 
-      <a class="ecosystem-link flex items-center justify-center gap-2" href="#">
+      <RouterLink
+        to="/lands"
+        class="ecosystem-link flex items-center justify-center gap-2"
+      >
         <span class="text-white opacity-75">ENTER THE GEO DATA ECOSYSTEM</span>
         <img
           src="@/assets/icons/right-triangle-icon.svg"
           alt="Right Triangle Icon"
         />
-      </a>
+      </RouterLink>
     </section>
   </main>
 </template>
 
 <style scoped lang="scss">
 main {
+  position: relative;
   @media (max-width: 768px) {
     padding-left: 5rem;
   }
@@ -49,21 +76,48 @@ main {
 .hero {
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)),
-    url("../assets/images/backgrounds/home-hero-background.png") no-repeat
-      center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
   background-size: cover;
+}
+
+#heroVideoBackground {
+  position: absolute;
+  height: 20rem;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .live-button {
   margin-left: auto;
   width: fit-content;
+  border-radius: 1rem;
+  transition: 0.2s ease;
+
+  &:hover {
+    box-shadow: 0px 0px 23px #bc1fdb;
+  }
 
   @media (max-width: 768px) {
     & {
       margin: auto;
     }
   }
+}
+
+.background-blur {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: 0.3s ease;
+  animation: fadeIn 0.3s;
+  animation-fill-mode: forwards;
 }
 
 .branding-logo {
@@ -91,6 +145,8 @@ main {
 
 .catchphrase {
   font-family: "Ubuntu", sans-serif;
+  width: fit-content;
+  margin: 0 auto;
 
   .heading {
     background: linear-gradient(91.11deg, #dd00c7 -2.41%, #5a00cd 125.3%);
@@ -102,6 +158,29 @@ main {
     @media (min-width: 1400px) {
       & {
         font-size: 200px;
+      }
+    }
+
+    overflow: hidden;
+    border-right: 0.05em solid white;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink-caret {
+      from,
+      to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: white;
       }
     }
   }
@@ -119,6 +198,13 @@ main {
 }
 
 .ecosystem-link {
+  transition: 0.2s ease-out;
+
+  &:hover {
+    transform: translateY(-0.4rem);
+    padding-bottom: 0.4rem;
+  }
+
   span {
     letter-spacing: 0.6rem;
   }

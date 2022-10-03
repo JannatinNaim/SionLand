@@ -2,6 +2,7 @@
 defineProps<{
   text?: string;
   title?: string;
+  handleClick?: (e: any) => void;
 }>();
 </script>
 
@@ -9,6 +10,7 @@ defineProps<{
   <button
     :title="title"
     class="text-white text-sm uppercase font-black p-2 px-4"
+    @click="handleClick"
   >
     {{ text }}
   </button>

@@ -9,3 +9,12 @@
 }
 
 $primary-color: #7c00c6;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

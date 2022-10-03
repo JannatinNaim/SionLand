@@ -62,7 +62,7 @@ main {
 }
 .hero {
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)),
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6)),
     url("../assets/images/backgrounds/lands-hero-background.png") no-repeat
       center;
   background-size: cover;

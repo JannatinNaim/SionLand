@@ -1,5 +1,3 @@
-import "./assets/base.scss";
-
 import App from "./App.vue";
 import { createApp } from "vue";
 import { loadFonts } from "./plugins/webfontloader";

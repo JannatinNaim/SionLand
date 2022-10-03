@@ -7,7 +7,7 @@ const isExpanded = ref(false);
 const toggleMenu = () => (isExpanded.value = !isExpanded.value);
 
 const links = [
-  { label: "Lands", to: "/" },
+  { label: "Lands", to: "/lands" },
   { label: "Air Balloons", to: "/" },
   { label: "Oracle", to: "/" },
 ];
@@ -20,21 +20,19 @@ const links = [
     @mouseenter="toggleMenu"
     @mouseleave="toggleMenu"
   >
-    <div v-if="!isExpanded" class="logo">
-      <img src="../assets/icons/sionland-logo.png" alt="SionLand Logo" />
-    </div>
-    <div v-else class="logo-expanded">
-      <img
-        class="logo-icon"
-        src="../assets/icons/sionland-logo.png"
-        alt="SionLand Logo"
-      />
-      <img
-        class="logo-text"
-        src="@/assets/icons/sionland-logo-text.png"
-        alt="SionLand Text Logo"
-      />
-    </div>
+    <RouterLink to="/">
+      <div v-if="!isExpanded" class="logo">
+        <img src="../assets/icons/sionland-logo.png" alt="SionLand Logo" />
+      </div>
+      <div v-else class="logo-expanded">
+        <img
+          class="logo-icon"
+          src="../assets/icons/sionland-logo.png"
+          alt="SionLand Logo"
+        />
+        <span class="logo-text uppercase">SionLand</span>
+      </div>
+    </RouterLink>
 
     <div v-if="isExpanded" class="divider"></div>
 
@@ -53,11 +51,26 @@ const links = [
         :links="[links[2]]"
       />
     </div>
+
+    <div class="footer-branding">
+      <img
+        class="brand-logo"
+        src="@/assets/icons/sionland-logo.png"
+        alt="SionLand Logo"
+      />
+
+      <p v-if="isExpanded" class="text uppercase text-white">
+        Decentralized <br />
+        GeoData <br />
+        For Multiverse
+      </p>
+    </div>
   </aside>
 </template>
 
 <style lang="scss" scoped>
 aside {
+  position: relative;
   background: linear-gradient(188.3deg, #0d0b0e 54.16%, #7c00c6 202.38%);
   width: calc(3rem + 32px);
   padding: 1rem;
@@ -93,6 +106,8 @@ aside {
     padding: 1.5rem;
 
     display: flex;
+    align-items: center;
+    gap: 1rem;
 
     .logo-icon {
       flex: 1;
@@ -100,6 +115,8 @@ aside {
 
     .logo-text {
       flex: 3;
+      font-size: 1.4rem;
+      font-family: "Ailenrons";
     }
 
     img {
@@ -132,6 +149,44 @@ aside {
     flex-direction: column;
     gap: 0.2rem;
     padding-left: 0.2rem;
+  }
+}
+
+.footer-branding {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  .brand-logo {
+    position: absolute;
+    bottom: 7rem;
+    left: -9rem;
+    opacity: 0.4;
+    width: 18rem;
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    animation-name: spin;
+    animation-duration: 15000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .text {
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    letter-spacing: 0.115em;
   }
 }
 </style>

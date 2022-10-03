@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700;900&display=swap");
+@font-face {
+  font-family: "Ailenrons";
+  src: local("Ailenrons"), url("./fonts/Ailerons.woff2") format("woff2");
+}
 
 $primary-color: #7c00c6;

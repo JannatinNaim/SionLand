@@ -14,10 +14,7 @@ import TextButton from "../components/buttons/TextButton.vue";
           src="@/assets/icons/sionland-logo-purple.png"
           alt="SionLand Logo Purple"
         />
-        <img
-          src="@/assets/icons/sionland-logo-text.png"
-          alt="SionLand Logo Text"
-        />
+        <span class="logo-text uppercase">SionLand</span>
       </div>
 
       <h1 class="catchphrase flex flex-col items-start lg:items-center py-32">
@@ -50,11 +47,12 @@ main {
 }
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   padding: 2rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)),
     url("../assets/images/backgrounds/home-hero-background.png") no-repeat
       center;
+  background-size: cover;
 }
 
 .live-button {
@@ -75,6 +73,13 @@ main {
 
   img {
     display: block;
+    width: 75px;
+  }
+
+  .logo-text {
+    color: white;
+    font-family: "Ailenrons";
+    font-size: 3rem;
   }
 
   @media (max-width: 768px) {
@@ -93,10 +98,23 @@ main {
     text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media (min-width: 1400px) {
+      & {
+        font-size: 200px;
+      }
+    }
   }
 
   .sub-heading {
     letter-spacing: 0.6rem;
+
+    @media (min-width: 1400px) {
+      & {
+        font-size: 2rem;
+        letter-spacing: 0.9em;
+      }
+    }
   }
 }
 

@@ -65,6 +65,7 @@ watch(isExpanded, () => {
   align-items: center;
   gap: 1rem;
   transition: 0.2s ease-out;
+  justify-content: space-between;
 
   &:hover {
     cursor: pointer;
@@ -86,12 +87,14 @@ watch(isExpanded, () => {
   }
 
   &-list {
+    width: 100%;
     &-toggle {
       padding: 0.4rem;
       padding-right: 1rem;
       display: flex;
       gap: 1rem;
       align-items: center;
+      justify-content: space-between;
 
       background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))
           padding-box,

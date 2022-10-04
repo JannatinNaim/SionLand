@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <button
     :title="title"
-    class="text-white text-sm uppercase font-black p-2 px-4"
+    class="text-white text-xs md:text-sm uppercase font-black p-1 px-3 md:p-2 md:px-4"
     @click="handleClick"
   >
     {{ text }}
@@ -18,12 +18,16 @@ defineProps<{
 
 <style scoped lang="scss">
 button {
-  background: linear-gradient(
-    92.64deg,
-    rgba(174, 0, 177, 0.6) 1.1%,
-    rgba(65, 9, 112, 0.6) 184.57%
-  ) !important;
-  border: 1px solid #ffffff;
+  border: 1px solid #bc1fdb;
   border-radius: 13px;
+
+  &:hover {
+    box-shadow: 0px 0px 23px #bc1fdb;
+    background: linear-gradient(
+      92.64deg,
+      rgba(174, 0, 177, 0.6) 1.1%,
+      rgba(65, 9, 112, 0.6) 184.57%
+    );
+  }
 }
 </style>

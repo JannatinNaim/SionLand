@@ -24,7 +24,7 @@ const getIcon = (type: iconType) => {
   <button :title="title" class="text-white text-sm uppercase p-6">
     <img :src="getIcon(icon)" :alt="iconAlt" />
 
-    <span class="text font-black">
+    <span class="text">
       {{ text }}
     </span>
   </button>
@@ -38,8 +38,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 12rem;
 
   img {
     height: 6rem;

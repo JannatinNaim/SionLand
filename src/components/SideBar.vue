@@ -18,15 +18,18 @@ const links = [
 <template>
   <aside
     class="flex flex-col overflow-hidden"
-    :class="`${isExpanded && 'is-expanded'}`"
+    :class="`${
+      isExpanded ? 'is-expanded burger-menu-open' : 'burger-menu-closed'
+    }`"
     @mouseenter="toggleMenu"
     @mouseleave="toggleMenu"
   >
-    <RouterLink to="/">
-      <div v-if="!isExpanded" class="logo">
-        <img src="../assets/icons/sionland-logo.png" alt="SionLand Logo" />
-      </div>
-      <div v-else class="logo-expanded">
+    <div :class="`logo ${isExpanded && 'hidden'}`" @click="toggleMenu">
+      <img src="../assets/icons/sionland-logo.png" alt="SionLand Logo" />
+    </div>
+
+    <RouterLink :class="`${!isExpanded && 'hidden'}`" to="/">
+      <div class="logo-expanded">
         <img
           class="logo-icon"
           src="../assets/icons/sionland-logo.png"
@@ -76,7 +79,7 @@ aside {
   background: linear-gradient(188.3deg, #0d0b0e 54.16%, #7c00c6 202.38%);
   width: calc(3rem + 32px);
   padding: 1rem;
-  min-height: 100vh;
+  height: 100vh;
 
   color: white;
 
@@ -96,6 +99,20 @@ aside {
     z-index: 98;
     width: 3.5rem;
     padding: 0.3rem;
+
+    &.burger-menu-open {
+      height: 100vh;
+    }
+
+    &.burger-menu-closed {
+      background: none;
+      border: none;
+      padding: 0;
+      padding-left: 0.6rem;
+      padding-top: 0.6rem;
+      width: 5rem;
+      height: 5rem;
+    }
   }
 
   .logo {

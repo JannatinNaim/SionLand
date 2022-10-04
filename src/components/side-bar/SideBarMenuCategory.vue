@@ -84,19 +84,19 @@ watch(isExpanded, () => {
   &-icon {
     border: 1px solid #ffffff55;
     border-radius: 12px;
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2.6rem;
+    height: 2.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
 
     img {
-      height: 1.4rem;
+      height: 1.3rem;
     }
   }
 
   .is-expanded {
-    width: 2.6rem;
+    width: 3.2rem;
   }
 
   &-list {

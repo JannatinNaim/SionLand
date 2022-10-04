@@ -75,7 +75,7 @@ main {
   position: relative;
 
   @media (max-width: 768px) {
-    padding-left: 3.5rem;
+    //padding-left: 3.5rem;
   }
 }
 .hero {

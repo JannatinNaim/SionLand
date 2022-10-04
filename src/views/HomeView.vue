@@ -32,7 +32,7 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
         <LiveMenu v-if="showLiveMenu" />
       </div>
 
-      <div class="branding-logo py-8">
+      <div class="branding-logo py-8 mt-8">
         <img
           src="@/assets/icons/sionland-logo-purple.png"
           alt="SionLand Logo Purple"
@@ -41,7 +41,7 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
       </div>
 
       <h1
-        class="catchphrase flex flex-col items-start lg:items-center py-16 lg:py-32"
+        class="catchphrase flex flex-col items-start lg:items-center py-16 lg:py-48 mt-16 mb-16"
       >
         <div class="sub-heading text-sm sm:text-1xl md:text-2xl">
           <span class="text-white font-bold">DECENTRALIZED GEODATA&nbsp;</span>
@@ -66,9 +66,13 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
 
 <style scoped lang="scss">
 main {
+  // FIXME: temporary fix
+  overflow-x: hidden;
+
   position: relative;
+
   @media (max-width: 768px) {
-    padding-left: 3.5rem;
+    //padding-left: 3.5rem;
   }
 }
 
@@ -80,6 +84,7 @@ main {
 
   @media (max-width: 768px) {
     padding: 1rem;
+    //padding-top: 3rem;
   }
 }
 
@@ -102,12 +107,6 @@ main {
 
   &:hover {
     box-shadow: 0px 0px 23px #bc1fdb;
-  }
-
-  @media (max-width: 768px) {
-    & {
-      margin: auto;
-    }
   }
 }
 
@@ -165,7 +164,7 @@ main {
 
     img {
       width: 80%;
-      max-width: 12rem;
+      max-width: 8rem;
     }
   }
 }
@@ -174,6 +173,10 @@ main {
   font-family: "Ubuntu", sans-serif;
   width: fit-content;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
   .heading {
     background: linear-gradient(91.11deg, #dd00c7 -2.41%, #5a00cd 125.3%);
@@ -190,13 +193,7 @@ main {
 
     @media (max-width: 768px) {
       & {
-        font-size: 2.5rem;
-      }
-    }
-
-    @media (max-width: 668px) {
-      & {
-        font-size: 2rem;
+        font-size: 2.8rem;
       }
     }
 
@@ -233,6 +230,12 @@ main {
         letter-spacing: 0.9em;
       }
     }
+
+    @media (max-width: 768px) {
+      & {
+        font-size: 1rem;
+      }
+    }
   }
 }
 
@@ -254,14 +257,11 @@ main {
   }
 
   @media (max-width: 768px) {
-    font-size: 1rem;
-    gap: 0.2rem;
-    justify-content: start;
+    gap: 1rem;
 
     span {
       font-size: 0.8rem;
-      letter-spacing: 0.3rem;
-      width: 80%;
+      letter-spacing: 1.4px;
     }
 
     img {

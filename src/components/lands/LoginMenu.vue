@@ -4,7 +4,7 @@ import TransparentIconTextButton from "../buttons/TransparentIconTextButton.vue"
 
 <template>
   <div class="popup p-2">
-    <span class="text-white font-light uppercase text-center block p-2"
+    <span class="title text-white font-black uppercase text-center block p-2"
       >Login</span
     >
 
@@ -42,6 +42,8 @@ import TransparentIconTextButton from "../buttons/TransparentIconTextButton.vue"
 
   animation: fadeIn 0.3s;
   animation-fill-mode: forwards;
+
+  font-family: "Ubuntu";
 
   .buttons {
     display: flex;

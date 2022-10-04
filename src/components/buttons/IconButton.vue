@@ -33,19 +33,21 @@ const getButtonIcon = (type: iconType) => {
 
 <style scoped lang="scss">
 button {
-  background: linear-gradient(
-    92.64deg,
-    rgba(174, 0, 177, 0.6) 1.1%,
-    rgba(65, 9, 112, 0.6) 184.57%
-  ) !important;
+  border: 1px solid #bc1fdb;
   border-radius: 13px;
 
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: 0.2s ease-out;
 
   &:hover {
     box-shadow: 0px 0px 23px #bc1fdb;
+    background: linear-gradient(
+      92.64deg,
+      rgba(174, 0, 177, 0.6) 1.1%,
+      rgba(65, 9, 112, 0.6) 184.57%
+    );
   }
 }
 </style>

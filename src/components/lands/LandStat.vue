@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="land-stat">
-    <div class="text">
+    <div class="text font-bold">
       <span class="text-white uppercase opacity-75">{{ keyword }}</span>
       <span class="text-white uppercase opacity-75">{{ text }}</span>
     </div>
@@ -29,6 +29,7 @@ defineProps<{
   .text {
     display: flex;
     flex-direction: column;
+    font-family: "Ubuntu";
   }
 
   .count {

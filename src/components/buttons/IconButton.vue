@@ -7,6 +7,7 @@ defineProps<{
   title?: string;
   icon: iconType;
   iconAlt?: string;
+  handleClick?: (e: any) => void;
 }>();
 
 const getButtonIcon = (type: iconType) => {
@@ -21,6 +22,7 @@ const getButtonIcon = (type: iconType) => {
   <button
     :title="title"
     class="text-white text-sm uppercase font-black p-2 px-6"
+    @click="handleClick"
   >
     <img :src="getButtonIcon(icon)" :alt="iconAlt" />
     <span>
@@ -41,5 +43,9 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  &:hover {
+    box-shadow: 0px 0px 23px #bc1fdb;
+  }
 }
 </style>

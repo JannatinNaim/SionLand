@@ -72,6 +72,15 @@ watch(isExpanded, () => {
     transform: scale(1.01);
   }
 
+  .list-title {
+    font-family: "Mulish", sans-serif;
+    font-weight: bold;
+  }
+
+  &-list {
+    padding: 1rem 0;
+  }
+
   &-icon {
     border: 1px solid #ffffff55;
     border-radius: 12px;
@@ -125,12 +134,15 @@ watch(isExpanded, () => {
   transition: 0.2s ease-out;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.8rem;
 
   .menu-item {
     padding-left: 4rem;
     transition: 0.2s ease-out;
     border-radius: 1rem;
+    color: #b7b7b7;
+    font-family: "Mulish";
+    font-weight: bold;
 
     &:hover {
       background: linear-gradient(
@@ -138,6 +150,7 @@ watch(isExpanded, () => {
         #470256 0%,
         rgba(71, 2, 86, 0) 99.87%
       );
+      color: white;
       font-weight: bold;
       padding-left: 4.2rem;
     }

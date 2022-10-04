@@ -3,8 +3,10 @@ import { ref } from "vue";
 import SideBarMenuCategory from "./side-bar/SideBarMenuCategory.vue";
 
 const isExpanded = ref(false);
+// const isExpanded = ref(true);
 
 const toggleMenu = () => (isExpanded.value = !isExpanded.value);
+// const toggleMenu = () => {};
 
 const links = [
   { label: "Lands", to: "/lands" },
@@ -91,7 +93,9 @@ aside {
 
   @media (max-width: 768px) {
     position: fixed;
-    z-index: 99;
+    z-index: 98;
+    width: 3.5rem;
+    padding: 0.3rem;
   }
 
   .logo {

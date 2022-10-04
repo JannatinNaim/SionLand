@@ -40,8 +40,10 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
         <span class="logo-text uppercase">SionLand</span>
       </div>
 
-      <h1 class="catchphrase flex flex-col items-start lg:items-center py-32">
-        <div class="sub-heading text-1xl md:text-2xl">
+      <h1
+        class="catchphrase flex flex-col items-start lg:items-center py-16 lg:py-32"
+      >
+        <div class="sub-heading text-sm sm:text-1xl md:text-2xl">
           <span class="text-white font-bold">DECENTRALIZED GEODATA&nbsp;</span>
           <span class="text-white opacity-50 font-thin">FOR</span>
         </div>
@@ -51,10 +53,7 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
         >
       </h1>
 
-      <RouterLink
-        to="/lands"
-        class="ecosystem-link flex items-center justify-center gap-2"
-      >
+      <RouterLink to="/lands" class="ecosystem-link">
         <span class="text-white opacity-75">ENTER THE GEO DATA ECOSYSTEM</span>
         <img
           src="@/assets/icons/right-triangle-icon.svg"
@@ -69,7 +68,7 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
 main {
   position: relative;
   @media (max-width: 768px) {
-    padding-left: 5rem;
+    padding-left: 3.5rem;
   }
 }
 
@@ -78,6 +77,10 @@ main {
   padding: 2rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
   background-size: cover;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 }
 
 #heroVideoBackground {
@@ -118,6 +121,7 @@ main {
   transition: 0.3s ease;
   animation: fadeIn 0.3s;
   animation-fill-mode: forwards;
+  z-index: 99;
 }
 
 .branding-logo {
@@ -128,6 +132,20 @@ main {
   img {
     display: block;
     width: 75px;
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    animation-name: spin;
+    animation-duration: 15000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
 
   .logo-text {
@@ -137,8 +155,17 @@ main {
   }
 
   @media (max-width: 768px) {
+    & {
+      flex-direction: column;
+    }
+
+    .logo-text {
+      font-size: 2.5rem;
+    }
+
     img {
-      height: 6rem;
+      width: 80%;
+      max-width: 12rem;
     }
   }
 }
@@ -158,6 +185,18 @@ main {
     @media (min-width: 1400px) {
       & {
         font-size: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      & {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 668px) {
+      & {
+        font-size: 2rem;
       }
     }
 
@@ -199,6 +238,11 @@ main {
 
 .ecosystem-link {
   transition: 0.2s ease-out;
+  padding-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     transform: translateY(-0.4rem);
@@ -207,6 +251,21 @@ main {
 
   span {
     letter-spacing: 0.6rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    gap: 0.2rem;
+    justify-content: start;
+
+    span {
+      font-size: 0.8rem;
+      letter-spacing: 0.3rem;
+      width: 80%;
+    }
+
+    img {
+    }
   }
 }
 </style>

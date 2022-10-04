@@ -1,15 +1,31 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import IconButton from "../components/buttons/IconButton.vue";
-import TextButton from "../components/buttons/TextButton.vue";
 import TransparentTextButton from "../components/buttons/TransparentTextButton.vue";
 import LandStat from "../components/lands/LandStat.vue";
+import LoginMenu from "../components/lands/LoginMenu.vue";
+
+const showLoginMenu = ref(false);
+const handleLoginButtonClick = () =>
+  (showLoginMenu.value = !showLoginMenu.value);
 </script>
 
 <template>
   <main>
     <section class="hero">
       <div class="login-button">
-        <IconButton icon="globe" text="Login" />
+        <IconButton
+          icon="globe"
+          text="Login"
+          :handleClick="handleLoginButtonClick"
+        />
+
+        <div
+          v-if="showLoginMenu"
+          @click="handleLoginButtonClick"
+          class="background-blur"
+        ></div>
+        <LoginMenu v-if="showLoginMenu" />
       </div>
 
       <div class="branding">
@@ -56,8 +72,10 @@ import LandStat from "../components/lands/LandStat.vue";
 
 <style scoped lang="scss">
 main {
+  position: relative;
+
   @media (max-width: 768px) {
-    padding-left: 5rem;
+    padding-left: 3.5rem;
   }
 }
 .hero {
@@ -169,5 +187,17 @@ main {
       flex-direction: column;
     }
   }
+}
+.background-blur {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: 0.3s ease;
+  animation: fadeIn 0.3s;
+  animation-fill-mode: forwards;
+  z-index: 99;
 }
 </style>

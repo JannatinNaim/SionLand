@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import GlobeIcon from "@/assets/icons/globe-icon.png";
+import { useThemeStore } from "../../stores/theme";
+
+const theme = useThemeStore();
 
 type iconType = "globe";
 defineProps<{
@@ -20,8 +23,9 @@ const getButtonIcon = (type: iconType) => {
 
 <template>
   <button
+    :class="theme.theme"
     :title="title"
-    class="text-white text-sm uppercase font-black p-2 px-6"
+    class="text-sm uppercase font-black p-2 px-6"
     @click="handleClick"
   >
     <img :src="getButtonIcon(icon)" :alt="iconAlt" />
@@ -49,5 +53,13 @@ button {
       rgba(65, 9, 112, 0.6) 184.57%
     );
   }
+}
+
+.dark {
+  color: white;
+}
+
+.light {
+  color: #141414;
 }
 </style>

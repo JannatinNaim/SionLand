@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import TransparentIconTextButton from "../buttons/TransparentIconTextButton.vue";
+import { useThemeStore } from "../../stores/theme";
+
+const theme = useThemeStore();
 </script>
 
 <template>
-  <div class="popup p-2">
-    <span class="title text-white font-black uppercase text-center block p-2"
-      >Login</span
-    >
+  <div :class="theme.theme" class="popup p-2">
+    <span class="title font-black uppercase text-center block p-2">Login</span>
 
     <div class="buttons p-8 py-2 pb-8 gap-2">
       <TransparentIconTextButton text="MetaMask" icon="metamask" />
@@ -45,6 +46,10 @@ import TransparentIconTextButton from "../buttons/TransparentIconTextButton.vue"
 
   font-family: "Ubuntu";
 
+  .title {
+    color: white;
+  }
+
   .buttons {
     display: flex;
 
@@ -60,6 +65,24 @@ import TransparentIconTextButton from "../buttons/TransparentIconTextButton.vue"
         width: 100%;
       }
     }
+  }
+}
+
+.light {
+  background: linear-gradient(
+      86.47deg,
+      rgba(255, 255, 255, 0.8) 10.9%,
+      rgba(247, 193, 255, 0.8) 109.15%
+    ),
+    linear-gradient(
+      272.63deg,
+      rgba(8, 0, 10, 0.8) -46.57%,
+      rgba(13, 0, 16, 0.8) 105.64%
+    );
+  border: 0.5px solid #bc1fdb;
+
+  .title {
+    color: #1a1a1a;
   }
 }
 </style>

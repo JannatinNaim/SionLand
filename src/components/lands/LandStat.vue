@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import { useThemeStore } from "../../stores/theme";
+
+const theme = useThemeStore();
+
 defineProps<{
   keyword?: string;
   text?: string;
@@ -7,13 +11,13 @@ defineProps<{
 </script>
 
 <template>
-  <div class="land-stat">
+  <div :class="theme.theme" class="land-stat">
     <div class="text font-bold">
-      <span class="text-white uppercase opacity-75">{{ keyword }}</span>
-      <span class="text-white uppercase opacity-75">{{ text }}</span>
+      <span class="uppercase opacity-75">{{ keyword }}</span>
+      <span class="uppercase opacity-75">{{ text }}</span>
     </div>
 
-    <span class="count text-white uppercase text-8xl">
+    <span class="count uppercase text-8xl">
       {{ value || 0 }}
     </span>
   </div>
@@ -30,11 +34,23 @@ defineProps<{
     display: flex;
     flex-direction: column;
     font-family: "Ubuntu";
+    color: white;
   }
 
   .count {
     font-family: "Ailenrons", sans-serif;
     letter-spacing: -0.265em;
+    color: white;
+  }
+}
+
+.light {
+  .text {
+    color: #141414;
+  }
+
+  .count {
+    color: #141414;
   }
 }
 </style>

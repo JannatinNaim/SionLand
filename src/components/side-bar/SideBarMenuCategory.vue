@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import { ref, toRefs, watch } from "vue";
+import { useThemeStore } from "../../stores/theme";
 
 import GlobeIcon from "../../assets/icons/globe-icon.png";
 import DocumentIcon from "../../assets/icons/document-icon.png";
+
+const theme = useThemeStore();
 
 type iconType = "globe" | "document";
 const props = defineProps<{
@@ -35,7 +38,7 @@ watch(isExpanded, () => {
 </script>
 
 <template>
-  <div class="menu-section" @click="toggleClick">
+  <div :class="theme.theme" class="menu-section" @click="toggleClick">
     <div :class="`menu-section-icon ${isExpanded && 'is-expanded'}`">
       <img :src="getIcon(icon)" :alt="iconAlt" />
     </div>
@@ -166,5 +169,36 @@ watch(isExpanded, () => {
   //height: 100%;
   height: fit-content;
   transition: 0.2s ease-out;
+}
+
+.light {
+  .menu-section {
+    &-icon {
+      background: linear-gradient(118.05deg, #cd2195 2.92%, #100764 130.83%);
+      box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.5);
+    }
+
+    &-list {
+      &-toggle {
+        background: linear-gradient(to right, white, white) padding-box,
+          linear-gradient(to right, rgba(16, 7, 100, 0), #c42092) border-box;
+      }
+
+      .list-title {
+        color: #141414;
+      }
+    }
+  }
+
+  .menu-items {
+    .menu-item {
+      color: #4d4b4b;
+
+      &:hover {
+        background: linear-gradient(92.64deg, #cd2195 1.1%, #100764 184.57%);
+        color: white;
+      }
+    }
+  }
 }
 </style>

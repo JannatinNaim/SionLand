@@ -3,13 +3,16 @@ import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import TextButton from "../components/buttons/TextButton.vue";
 import LiveMenu from "../components/live/LiveMenu.vue";
+import { useThemeStore } from "../stores/theme";
+
+const theme = useThemeStore();
 
 const showLiveMenu = ref(false);
 const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
 </script>
 
 <template>
-  <main>
+  <main :class="theme.theme">
     <section class="hero">
       <video autoplay muted loop id="heroVideoBackground">
         <source
@@ -44,8 +47,8 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
         class="catchphrase flex flex-col items-start lg:items-center py-16 lg:py-48 mt-16 mb-16"
       >
         <div class="sub-heading text-sm sm:text-1xl md:text-2xl">
-          <span class="text-white font-bold">DECENTRALIZED GEODATA&nbsp;</span>
-          <span class="text-white opacity-50 font-thin">FOR</span>
+          <span class="font-bold">DECENTRALIZED GEODATA&nbsp;</span>
+          <span class="opacity-50 font-thin">FOR</span>
         </div>
 
         <span class="heading font-bold text-5xl md:text-6xl lg:text-8xl"
@@ -54,7 +57,7 @@ const handleLiveButtonClick = () => (showLiveMenu.value = !showLiveMenu.value);
       </h1>
 
       <RouterLink to="/lands" class="ecosystem-link">
-        <span class="text-white opacity-75">ENTER THE GEO DATA ECOSYSTEM</span>
+        <span class="opacity-75">ENTER THE GEO DATA ECOSYSTEM</span>
         <img
           src="@/assets/icons/right-triangle-icon.svg"
           alt="Right Triangle Icon"
@@ -223,6 +226,7 @@ main {
 
   .sub-heading {
     letter-spacing: 0.6rem;
+    color: white;
 
     @media (min-width: 1400px) {
       & {
@@ -246,6 +250,7 @@ main {
   gap: 1rem;
   align-items: center;
   justify-content: center;
+  color: white;
 
   &:hover {
     transform: translateY(-0.4rem);
@@ -266,6 +271,28 @@ main {
 
     img {
     }
+  }
+}
+
+.light {
+  .hero {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .branding-logo {
+    .logo-text {
+      color: #141414;
+    }
+  }
+
+  .catchphrase {
+    .sub-heading {
+      color: #141414;
+    }
+  }
+
+  .ecosystem-link {
+    color: #141414;
   }
 }
 </style>

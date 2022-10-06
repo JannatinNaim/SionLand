@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import SideBarMenuCategory from "./side-bar/SideBarMenuCategory.vue";
+import { useThemeStore } from "../stores/theme";
+
+const theme = useThemeStore();
 
 const isExpanded = ref(false);
 // const isExpanded = ref(true);
@@ -20,19 +23,35 @@ const links = [
     class="flex flex-col overflow-hidden"
     :class="`${
       isExpanded ? 'is-expanded burger-menu-open' : 'burger-menu-closed'
-    }`"
+    } ${theme.theme}`"
     @mouseenter="toggleMenu"
     @mouseleave="toggleMenu"
   >
     <div :class="`logo ${isExpanded && 'hidden'}`" @click="toggleMenu">
-      <img src="../assets/icons/sionland-logo.png" alt="SionLand Logo" />
+      <img
+        v-if="theme.theme === 'dark'"
+        src="../assets/icons/sionland-logo.png"
+        alt="SionLand Logo"
+      />
+      <img
+        v-else
+        src="../assets/icons/sionland-logo-purple.png"
+        alt="SionLand Logo"
+      />
     </div>
 
     <RouterLink :class="`${!isExpanded && 'hidden'}`" to="/">
       <div class="logo-expanded">
         <img
+          v-if="theme.theme === 'dark'"
           class="logo-icon"
           src="../assets/icons/sionland-logo.png"
+          alt="SionLand Logo"
+        />
+        <img
+          v-else
+          class="logo-icon"
+          src="../assets/icons/sionland-logo-purple.png"
           alt="SionLand Logo"
         />
         <span class="logo-text uppercase">SionLand</span>
@@ -59,12 +78,19 @@ const links = [
 
     <div class="footer-branding">
       <img
+        v-if="theme.theme === 'dark'"
         class="brand-logo"
         src="@/assets/icons/sionland-logo.png"
         alt="SionLand Logo"
       />
+      <img
+        v-else
+        class="brand-logo"
+        src="@/assets/icons/sionland-logo-purple.png"
+        alt="SionLand Logo"
+      />
 
-      <p v-if="isExpanded" class="text uppercase text-white">
+      <p v-if="isExpanded" class="text uppercase">
         Decentralized <br />
         GeoData <br />
         For Multiverse
@@ -200,11 +226,30 @@ aside {
   .text {
     padding-bottom: 1rem;
     padding-left: 2rem;
+    color: white;
 
     font-weight: 700;
     font-size: 14px;
     line-height: 13px;
     letter-spacing: 0.115em;
+  }
+}
+
+.light {
+  background: linear-gradient(188.3deg, #ffffff 54.16%, #7c00c6 202.38%);
+  box-shadow: -21px 4px 42px 15px rgba(0, 0, 0, 0.25);
+  border: none;
+
+  .logo-expanded {
+    .logo-text {
+      color: #141414;
+    }
+  }
+
+  .footer-branding {
+    .text {
+      color: #141414;
+    }
   }
 }
 </style>

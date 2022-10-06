@@ -4,6 +4,9 @@ import IconButton from "../components/buttons/IconButton.vue";
 import TransparentTextButton from "../components/buttons/TransparentTextButton.vue";
 import LandStat from "../components/lands/LandStat.vue";
 import LoginMenu from "../components/lands/LoginMenu.vue";
+import { useThemeStore } from "../stores/theme";
+
+const theme = useThemeStore();
 
 const showLoginMenu = ref(false);
 const handleLoginButtonClick = () =>
@@ -11,7 +14,7 @@ const handleLoginButtonClick = () =>
 </script>
 
 <template>
-  <main>
+  <main :class="theme.theme">
     <section class="hero">
       <div class="login-button">
         <IconButton
@@ -29,22 +32,34 @@ const handleLoginButtonClick = () =>
       </div>
 
       <div class="branding">
-        <span class="branding-text text-white uppercase opacity-75"
-          >Welcome To</span
-        >
+        <span class="branding-text uppercase opacity-75">Welcome To</span>
 
         <div class="branding-logo">
           <img
-            src="@/assets/icons/sionland-logo-text.png"
-            alt="SionLand Logo Text"
-            class="logo-text"
+            v-if="theme.theme === 'dark'"
+            class="logo-icon"
+            src="../assets/icons/sionland-logo.png"
+            alt="SionLand Logo"
           />
+          <img
+            v-else
+            class="logo-icon"
+            src="../assets/icons/sionland-logo-purple.png"
+            alt="SionLand Logo"
+          />
+          <span class="logo-text uppercase">SionLand</span>
         </div>
       </div>
 
       <div class="sion-links-showcase">
         <img
+          v-if="theme.theme === 'dark'"
           src="@/assets/icons/large-globe-icon-transparent.png"
+          alt="Globe Icon"
+        />
+        <img
+          v-else
+          src="@/assets/icons/large-globe-icon-transparent-purple.png"
           alt="Globe Icon"
         />
 
@@ -53,6 +68,8 @@ const handleLoginButtonClick = () =>
           <TransparentTextButton text="Air Balloons" keyword="explore" />
         </div>
       </div>
+
+      <span class="general-statistics">General Statistics</span>
 
       <div class="sion-land-stats">
         <div class="land-stat-bar"></div>
@@ -109,17 +126,30 @@ main {
   padding-bottom: 6rem;
 
   &-text {
+    color: white;
   }
 
   &-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    //padding: 1.5rem;
+    padding-bottom: 1.5rem;
 
-    width: 14rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 
     .logo-icon {
-      width: 3.6rem;
+      flex: 2;
+    }
+
+    .logo-text {
+      flex: 1;
+      font-size: 2.2rem;
+      font-family: "Ailenrons";
+      color: white;
+    }
+
+    img {
+      width: 4rem;
     }
   }
 }
@@ -140,6 +170,16 @@ main {
   @media (max-width: 768px) {
     flex-direction: column;
   }
+}
+
+.general-statistics {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Ubuntu";
+  font-size: 1.2rem;
+  color: #958686;
 }
 
 .sion-land-stats {
@@ -199,5 +239,33 @@ main {
   animation: fadeIn 0.3s;
   animation-fill-mode: forwards;
   z-index: 99;
+}
+
+.light {
+  .hero {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.9)
+      ),
+      url("../assets/images/backgrounds/lands-hero-background.png") no-repeat
+        center;
+  }
+
+  .branding {
+    &-text {
+      color: #141414;
+    }
+
+    &-logo {
+      .logo-text {
+        color: #141414;
+      }
+    }
+  }
+
+  .general-statistics {
+    color: #505050;
+  }
 }
 </style>

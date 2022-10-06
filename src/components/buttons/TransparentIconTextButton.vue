@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import MetaMaskLogo from "@/assets/icons/metamask-logo.png";
 import WalletConnectLogo from "@/assets/icons/wallet-connect-logo.png";
+import { useThemeStore } from "../../stores/theme";
+
+const theme = useThemeStore();
 
 type iconType = "metamask" | "wallet-connect";
 defineProps<{
@@ -21,7 +24,11 @@ const getIcon = (type: iconType) => {
 </script>
 
 <template>
-  <button :title="title" class="text-white text-sm uppercase p-6">
+  <button
+    :class="theme.theme"
+    :title="title"
+    class="text-white text-sm uppercase p-6"
+  >
     <img :src="getIcon(icon)" :alt="iconAlt" />
 
     <span class="text">
@@ -54,6 +61,16 @@ button {
 
   .text {
     font-size: 14px;
+  }
+}
+
+button.light {
+  background: #1a011e;
+  border: 0.5px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+
+  &:hover {
+    background: #bc1fdb;
   }
 }
 </style>

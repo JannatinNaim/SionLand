@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useThemeStore } from "../../stores/theme";
+const theme = useThemeStore();
+
 defineProps<{
   text?: string;
   title?: string;
@@ -9,7 +12,8 @@ defineProps<{
 <template>
   <button
     :title="title"
-    class="text-white text-xs md:text-sm uppercase font-black p-1 px-3 md:p-2 md:px-4"
+    :class="theme.theme"
+    class="text-xs md:text-sm uppercase font-black p-1 px-3 md:p-2 md:px-4"
     @click="handleClick"
   >
     {{ text }}
@@ -28,6 +32,18 @@ button {
       rgba(174, 0, 177, 0.6) 1.1%,
       rgba(65, 9, 112, 0.6) 184.57%
     );
+  }
+}
+
+.dark {
+  color: white;
+}
+
+.light {
+  color: #141414;
+
+  &:hover {
+    color: white;
   }
 }
 </style>

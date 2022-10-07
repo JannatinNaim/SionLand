@@ -286,6 +286,13 @@ main {
   }
 
   .catchphrase {
+    .heading {
+      background: linear-gradient(91.46deg, #83009d 3.43%, #560067 100.51%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
     .sub-heading {
       color: #141414;
     }

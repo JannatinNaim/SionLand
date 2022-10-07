@@ -200,5 +200,9 @@ watch(isExpanded, () => {
       }
     }
   }
+
+  .toggle-icon {
+    filter: invert(100%);
+  }
 }
 </style>

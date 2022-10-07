@@ -237,8 +237,15 @@ aside {
 
 .light {
   background: linear-gradient(188.3deg, #ffffff 54.16%, #7c00c6 202.38%);
-  box-shadow: -21px 4px 42px 15px rgba(0, 0, 0, 0.25);
   border: none;
+
+  @media (min-width: 769px) {
+    box-shadow: -21px 4px 42px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  &.is-expanded {
+    box-shadow: -21px 4px 42px 15px rgba(0, 0, 0, 0.25);
+  }
 
   .logo-expanded {
     .logo-text {

@@ -16,6 +16,13 @@ const handleLoginButtonClick = () =>
 <template>
   <main :class="theme.theme">
     <section class="hero">
+      <video autoplay muted loop id="heroVideoBackground">
+        <source
+          src="@/assets/videos/backgrounds/lands-hero-background.mp4"
+          type="video/mp4"
+        />
+      </video>
+
       <div class="login-button">
         <IconButton
           icon="globe"
@@ -97,10 +104,19 @@ main {
 }
 .hero {
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6)),
-    url("../assets/images/backgrounds/lands-hero-background.png") no-repeat
-      center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6));
   background-size: cover;
+}
+
+#heroVideoBackground {
+  position: absolute;
+  height: 20rem;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .login-button {
@@ -244,12 +260,10 @@ main {
 .light {
   .hero {
     background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.9)
-      ),
-      url("../assets/images/backgrounds/lands-hero-background.png") no-repeat
-        center;
+      to bottom,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
+    );
   }
 
   .branding {

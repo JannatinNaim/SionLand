@@ -104,7 +104,7 @@ main {
 }
 .hero {
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8));
   background-size: cover;
 }
 
